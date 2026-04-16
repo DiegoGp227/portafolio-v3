@@ -1,3 +1,12 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-export default defineConfig({});
+export default defineConfig({
+  server: {
+    host: true,
+  },
+  vite: {
+    server: {
+      allowedHosts: "all",
+    },
+  },
+});
