@@ -30,4 +30,4 @@ COPY --from=builder /app ./
 EXPOSE 4321
 
 # Ejecutar en modo producción
-CMD ["pnpm", "preview", "--host", "0.0.0.0", "--port", "4321"]
+CMD ["pnpm", "dev", "--host", "0.0.0.0", "--port", "4321"]
