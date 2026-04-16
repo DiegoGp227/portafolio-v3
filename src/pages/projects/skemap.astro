@@ -1,0 +1,79 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { getIcon } from '../../data/tech-icons';
+
+const features = [
+  { title: 'Jerarquía Project → Epic → Task', desc: 'Organización en tres niveles con seguimiento de progreso independiente en cada capa.' },
+  { title: 'Optimistic UI con rollback', desc: 'Las acciones se reflejan en la interfaz al instante. Si la API falla, el estado revierte automáticamente sin perder datos.' },
+  { title: 'Autenticación JWT + ownership', desc: 'Cada mutación verifica que el recurso pertenece al usuario autenticado antes de ejecutarse.' },
+  { title: 'Validación full-stack', desc: 'Zod en el backend, React Hook Form en el frontend. El mismo contrato de datos en ambos extremos.' },
+  { title: 'Stats sin N+1', desc: 'Los conteos de tareas por estado se calculan en una sola query con COUNT + FILTER, no en múltiples roundtrips.' },
+  { title: 'Arquitectura limpia', desc: 'Route → Controller → Service → Prisma. Cada capa tiene una sola responsabilidad, fácil de testear y extender.' },
+];
+
+const stack = ['Next.js', 'React', 'TypeScript', 'Express', 'PostgreSQL', 'Prisma', 'Docker', 'Docker Compose'];
+---
+
+<ProjectLayout title="SKEMAP" description="Herramienta full-stack de gestión de proyectos con jerarquía Project → Epic → Task.">
+
+  <div class="ppage-hero">
+    <div class="ppage-meta">
+      <span class="ppage-num">001</span>
+      <span class="ppage-status beta">Beta</span>
+    </div>
+    <h1 class="ppage-title">SKEMAP</h1>
+    <p class="ppage-subtitle">Gestión de proyectos</p>
+    <p class="ppage-desc">
+      Herramienta full-stack para gestionar proyectos con una jerarquía de tres niveles.
+      Construida con Next.js y Express, pensada para que equipos pequeños tengan visibilidad
+      real del estado de cada entregable sin complejidad innecesaria.
+    </p>
+    <div class="ppage-links">
+      <a href="https://skemap.devdiego.work/" target="_blank" rel="noopener noreferrer" class="btn-primary">Ver en vivo</a>
+      <a href="https://github.com/DiegoGp227/skemap" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub</a>
+    </div>
+  </div>
+
+  <div class="browser-frame">
+    <div class="browser-topbar">
+      <div class="fake-dot r"></div>
+      <div class="fake-dot y"></div>
+      <div class="fake-dot g"></div>
+      <span class="browser-url">skemap.devdiego.work</span>
+    </div>
+    <div class="browser-screen">
+      <img src="/Projects/skemap.png" alt="SKEMAP screenshot" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Funcionalidades</div>
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <div class="feature-title">{f.title}</div>
+          <div class="feature-desc">{f.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Stack técnico</div>
+    <div class="stack-icon-grid">
+      {stack.map((name) => {
+        const icon = getIcon(name);
+        return (
+          <div class="stack-icon-card">
+            {icon
+              ? <img src={icon} alt={name} loading="lazy" />
+              : <span class="stack-icon-fallback">{name.slice(0, 2).toUpperCase()}</span>
+            }
+            <span>{name}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+</ProjectLayout>

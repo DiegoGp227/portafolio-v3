@@ -1,0 +1,18 @@
+---
+const links = [
+  { href: '#about',        label: 'About' },
+  { href: '#skills',       label: 'Skills' },
+  { href: '#technologies', label: 'Tech' },
+  { href: '#projects',     label: 'Projects' },
+  { href: '#contact',      label: 'Contact' },
+];
+---
+
+<nav id="navbar">
+  <div class="nav-logo">// DG.dev</div>
+  <ul class="nav-links">
+    {links.map((link) => (
+      <li><a href={link.href}>{link.label}</a></li>
+    ))}
+  </ul>
+</nav>

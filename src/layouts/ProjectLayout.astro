@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Diego Gongora`} description={description}>
+  <header class="project-page-nav">
+    <a href="/" class="back-link">← Volver al portafolio</a>
+    <span class="project-page-nav-logo">// DG.dev</span>
+  </header>
+
+  <main class="project-page">
+    <slot />
+  </main>
+
+  <footer class="project-page-footer">
+    <div class="footer-copy">© 2025 Diego Gongora</div>
+    <a href="/#projects" class="footer-back">Ver todos los proyectos</a>
+  </footer>
+</BaseLayout>

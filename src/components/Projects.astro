@@ -1,0 +1,139 @@
+---
+interface Project {
+  num: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+  live?: string;
+  github: string;
+  detailPage?: string;
+  status: 'Beta' | 'En desarrollo' | 'Terminado';
+  image?: string;
+  fakeUiCols?: number;
+}
+
+const projects: Project[] = [
+  {
+    num: '001',
+    title: 'SKEMAP',
+    subtitle: 'Gestión de proyectos',
+    description: 'Jerarquía Project → Epic → Task con Optimistic UI, JWT y arquitectura limpia Route → Controller → Service → Prisma.',
+    tags: ['Next.js', 'React', 'Express', 'PostgreSQL', 'Prisma', 'Docker'],
+    live: 'https://skemap.devdiego.work/',
+    github: 'https://github.com/DiegoGp227/skemap',
+    detailPage: '/projects/skemap',
+    status: 'Beta',
+    image: '/Projects/skemap.png',
+  },
+  {
+    num: '002',
+    title: 'MyCash',
+    subtitle: 'Finanzas personales',
+    description: 'Ingresos, gastos, deudas y metas en un solo lugar. Datos privados por usuario con autenticación propia.',
+    tags: ['Next.js', 'React', 'Express', 'MySQL', 'Prisma'],
+    live: 'https://coinmaster.devdiego.work/',
+    github: 'https://github.com/DiegoGp227/CoinMaster-v2',
+    detailPage: '/projects/mycash',
+    status: 'En desarrollo',
+    image: '/Projects/CoinMaster.png',
+  },
+  {
+    num: '003',
+    title: 'KILA',
+    subtitle: 'Validador de facturas DIAN',
+    description: 'Detecta errores en facturas electrónicas según normativa colombiana. Dashboard con estadísticas e historial.',
+    tags: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma'],
+    live: 'https://kila.coinmaster.devdiego.work/',
+    github: 'https://github.com/DiegoGp227/KILA',
+    detailPage: '/projects/kila',
+    status: 'En desarrollo',
+    image: '/Projects/Kila.png',
+  },
+  {
+    num: '004',
+    title: 'Server Propio',
+    subtitle: 'Raspberry Pi 5 autohospedado',
+    description: 'Todas mis apps en producción sobre infraestructura propia. CI/CD automático, Docker por proyecto y notificaciones Telegram.',
+    tags: ['Raspberry Pi', 'Docker', 'Linux', 'Cloudflare', 'GitHub Actions'],
+    github: 'https://github.com/DiegoGp227',
+    detailPage: '/projects/server',
+    status: 'Terminado',
+    image: '/Projects/serverCasero.jpg',
+  },
+];
+---
+
+<section id="projects">
+  <div class="section-label reveal">Trabajo real</div>
+  <h2 class="section-title reveal reveal-delay-1"><em>Proyectos</em> en producción</h2>
+
+  <div class="projects-grid">
+    {projects.map((project, i) => (
+      <div class={`project-card reveal reveal-delay-${(i % 2) + 1}`}>
+
+        <div class="project-thumb">
+          {project.image ? (
+            <div class="browser-frame">
+              <div class="browser-topbar">
+                <div class="fake-dot r"></div>
+                <div class="fake-dot y"></div>
+                <div class="fake-dot g"></div>
+                <span class="browser-url">{project.live ?? project.github}</span>
+              </div>
+              <div class="browser-screen">
+                <img src={project.image} alt={project.title} loading="lazy" />
+              </div>
+            </div>
+          ) : (
+            <div class="project-thumb-inner">
+              <div class="fake-ui">
+                <div class="fake-topbar">
+                  <div class="fake-dot r"></div>
+                  <div class="fake-dot y"></div>
+                  <div class="fake-dot g"></div>
+                </div>
+                <div class="fake-content">
+                  <div class="fake-line accent"></div>
+                  <div class="fake-line long"></div>
+                  <div class="fake-line mid"></div>
+                  <div class="fake-block">
+                    {Array.from({ length: project.fakeUiCols ?? 3 }).map(() => (
+                      <div class="fake-col"></div>
+                    ))}
+                  </div>
+                  <div class="fake-line short"></div>
+                </div>
+              </div>
+            </div>
+          )}
+          <div class="project-status-badge" data-status={project.status}>
+            {project.status}
+          </div>
+        </div>
+
+        <div class="project-info">
+          <div class="project-num">{project.num}</div>
+          <h3 class="project-title">{project.title}</h3>
+          <p class="project-subtitle">{project.subtitle}</p>
+          <p class="project-desc">{project.description}</p>
+          <div class="project-tags">
+            {project.tags.map((tag) => (
+              <span class="project-tag">{tag}</span>
+            ))}
+          </div>
+          <div class="project-links">
+            {project.live && (
+              <a href={project.live} target="_blank" rel="noopener noreferrer" class="btn-primary sm">Ver en vivo</a>
+            )}
+            <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn-ghost sm">GitHub</a>
+            {project.detailPage && (
+              <a href={project.detailPage} class="project-link">Ver más →</a>
+            )}
+          </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+const skills = [
+  {
+    category: 'React & Frontend',
+    tags: ['React', 'Next.js', 'TypeScript', 'Astro', 'Tailwind CSS', 'HTML', 'CSS'],
+  },
+  {
+    category: 'Backend & APIs',
+    tags: ['Node.js', 'Express', 'Bun', 'Elysia', 'REST', 'JWT'],
+  },
+  {
+    category: 'Bases de datos',
+    tags: ['PostgreSQL', 'MySQL', 'Prisma ORM'],
+  },
+  {
+    category: 'DevOps & Infra',
+    tags: ['Docker', 'Linux', 'GitHub Actions', 'Cloudflare', 'Raspberry Pi'],
+  },
+  {
+    category: 'Herramientas',
+    tags: ['Git', 'Figma', 'Zod', 'React Hook Form', 'VS Code'],
+  },
+];
+---
+
+<section id="skills">
+  <div class="section-label reveal">Capacidades</div>
+  <h2 class="section-title reveal reveal-delay-1">Lo que <em>aporto</em></h2>
+
+  <div class="skills-list">
+    {skills.map((group, i) => (
+      <div class={`skill-row reveal reveal-delay-${(i % 3) + 1}`}>
+        <div class="skill-row-label">{group.category}</div>
+        <div class="skill-row-tags">
+          {group.tags.map((tag) => (
+            <span class="skill-tag-pill">{tag}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

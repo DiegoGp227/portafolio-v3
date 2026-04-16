@@ -1,0 +1,79 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { getIcon } from '../../data/tech-icons';
+
+const features = [
+  { title: 'Validación según requisitos DIAN', desc: 'Detecta si una factura electrónica cumple con los campos y formatos exigidos por la norma colombiana.' },
+  { title: 'Detección de errores y advertencias', desc: 'Diferencia entre errores bloqueantes y advertencias opcionales, con mensajes claros por campo.' },
+  { title: 'Dashboard de estadísticas', desc: 'Resumen visual de validaciones: totales, tasa de errores y campos más frecuentemente inválidos.' },
+  { title: 'Historial por usuario', desc: 'Cada usuario tiene acceso a su propio historial de facturas validadas con filtros por fecha y estado.' },
+  { title: 'Registro local de usuarios', desc: 'Autenticación propia con registro y sesión persistente. Sin dependencias de servicios externos.' },
+  { title: 'Interfaz adaptable', desc: 'Diseñada para contadores y administrativos — sin tecnicismos innecesarios en la UI.' },
+];
+
+const stack = ['Next.js', 'React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'];
+---
+
+<ProjectLayout title="KILA" description="Herramienta web para validar facturas electrónicas según los requisitos de la DIAN.">
+
+  <div class="ppage-hero">
+    <div class="ppage-meta">
+      <span class="ppage-num">003</span>
+      <span class="ppage-status dev">En desarrollo</span>
+    </div>
+    <h1 class="ppage-title">KILA</h1>
+    <p class="ppage-subtitle">Validador de facturas electrónicas DIAN</p>
+    <p class="ppage-desc">
+      Herramienta pensada para empresas y contadores que necesitan verificar
+      que sus facturas electrónicas cumplen con los requisitos de la DIAN antes
+      de enviarlas. Reduce errores, ahorra tiempo y centraliza el historial de validaciones.
+    </p>
+    <div class="ppage-links">
+      <a href="https://kila.coinmaster.devdiego.work/" target="_blank" rel="noopener noreferrer" class="btn-primary">Ver en vivo</a>
+      <a href="https://github.com/DiegoGp227/KILA" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub</a>
+    </div>
+  </div>
+
+  <div class="browser-frame">
+    <div class="browser-topbar">
+      <div class="fake-dot r"></div>
+      <div class="fake-dot y"></div>
+      <div class="fake-dot g"></div>
+      <span class="browser-url">kila.coinmaster.devdiego.work</span>
+    </div>
+    <div class="browser-screen">
+      <img src="/Projects/Kila.png" alt="KILA screenshot" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Funcionalidades</div>
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <div class="feature-title">{f.title}</div>
+          <div class="feature-desc">{f.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Stack técnico</div>
+    <div class="stack-icon-grid">
+      {stack.map((name) => {
+        const icon = getIcon(name);
+        return (
+          <div class="stack-icon-card">
+            {icon
+              ? <img src={icon} alt={name} loading="lazy" />
+              : <span class="stack-icon-fallback">{name.slice(0, 2).toUpperCase()}</span>
+            }
+            <span>{name}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+</ProjectLayout>

@@ -1,0 +1,45 @@
+---
+import { getIcon } from '../data/tech-icons';
+
+const categories = [
+  {
+    label: 'Frontend',
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Astro'],
+  },
+  {
+    label: 'Backend & Bases de datos',
+    items: ['Node.js', 'Express', 'Bun', 'PostgreSQL', 'MySQL', 'Prisma'],
+  },
+  {
+    label: 'DevOps & Infra',
+    items: ['Docker', 'Linux', 'GitHub', 'GitHub Actions', 'Cloudflare', 'Raspberry Pi', 'Figma'],
+  },
+];
+---
+
+<section id="technologies">
+  <div class="section-label reveal">Herramientas</div>
+  <h2 class="section-title reveal reveal-delay-1"><em>Tecnologías</em> que uso</h2>
+
+  <div class="tech-categories">
+    {categories.map((cat, i) => (
+      <div class={`reveal reveal-delay-${i + 1}`}>
+        <div class="tech-category-label">{cat.label}</div>
+        <div class="tech-icon-grid">
+          {cat.items.map((name) => {
+            const icon = getIcon(name);
+            return (
+              <div class="tech-icon-card">
+                {icon
+                  ? <img src={icon} alt={name} loading="lazy" />
+                  : <span class="tech-icon-fallback">{name.slice(0, 2).toUpperCase()}</span>
+                }
+                <span class="tech-icon-label">{name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

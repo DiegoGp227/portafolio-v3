@@ -1,0 +1,79 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { getIcon } from '../../data/tech-icons';
+
+const features = [
+  { title: 'Stack aislado por proyecto', desc: 'Cada aplicación corre en su propio conjunto de contenedores Docker (frontend, backend, base de datos). Sin interferencias.' },
+  { title: 'CI/CD automático', desc: 'Al hacer push a main, GitHub Actions construye la imagen, la sube al registro y la despliega en la Raspberry Pi sin intervención manual.' },
+  { title: 'Notificaciones por Telegram', desc: 'El pipeline notifica en tiempo real el estado de cada deploy: inicio, éxito o fallo, con el nombre del proyecto y commit.' },
+  { title: 'Túnel Cloudflare', desc: 'Acceso público seguro sin exponer puertos al exterior. Cloudflare maneja SSL y enrutamiento por dominio.' },
+  { title: 'IP fija para acceso remoto', desc: 'Configuración de red local con IP estática para que el pipeline siempre encuentre el servidor.' },
+  { title: 'Bajo consumo, alta disponibilidad', desc: 'Raspberry Pi 5 corriendo 24/7 con arquitectura ligera optimizada para ARM. Costo operativo mínimo.' },
+];
+
+const stack = ['Raspberry Pi 5', 'Linux', 'Docker', 'Docker Compose', 'GitHub Actions', 'Cloudflare', 'Telegram Bot API'];
+---
+
+<ProjectLayout title="Server Propio" description="Infraestructura autohospedada en Raspberry Pi 5 con Docker, CI/CD y Cloudflare.">
+
+  <div class="ppage-hero">
+    <div class="ppage-meta">
+      <span class="ppage-num">006 / Infra</span>
+      <span class="ppage-status done">Terminado</span>
+    </div>
+    <h1 class="ppage-title">Server Propio</h1>
+    <p class="ppage-subtitle">Infraestructura autohospedada — Raspberry Pi 5</p>
+    <p class="ppage-desc">
+      Todas mis aplicaciones corren en un servidor físico que tengo en casa.
+      Construí la infraestructura completa: desde la red y el sistema operativo
+      hasta el pipeline de CI/CD. Cada app tiene su propio stack aislado,
+      se despliega sola y me notifica por Telegram cuando termina.
+    </p>
+    <div class="ppage-links">
+      <a href="https://github.com/DiegoGp227" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub</a>
+    </div>
+  </div>
+
+  <div class="browser-frame">
+    <div class="browser-topbar">
+      <div class="fake-dot r"></div>
+      <div class="fake-dot y"></div>
+      <div class="fake-dot g"></div>
+      <span class="browser-url">ssh pi@192.168.1.x — server casero</span>
+    </div>
+    <div class="browser-screen">
+      <img src="/Projects/serverCasero.jpg" alt="Server propio screenshot" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Cómo funciona</div>
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <div class="feature-title">{f.title}</div>
+          <div class="feature-desc">{f.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Stack técnico</div>
+    <div class="stack-icon-grid">
+      {stack.map((name) => {
+        const icon = getIcon(name);
+        return (
+          <div class="stack-icon-card">
+            {icon
+              ? <img src={icon} alt={name} loading="lazy" />
+              : <span class="stack-icon-fallback">{name.slice(0, 2).toUpperCase()}</span>
+            }
+            <span>{name}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+</ProjectLayout>

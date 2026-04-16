@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Diego Gongora — Full Stack Developer',
+  description = 'Desarrollador full stack. Transformo ideas en productos digitales funcionales.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // ─── Nav scroll state ─────────────────────────
+      const navbar = document.getElementById('navbar')!;
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+      });
+
+      // ─── Reveal + skill bars on scroll ───────────
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('.skill-fill').forEach((bar) => {
+            bar.classList.add('animate');
+          });
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+      const skillsSection = document.getElementById('skills');
+      if (skillsSection) {
+        const skillBarObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.querySelectorAll('.skill-fill').forEach((bar) => {
+              bar.classList.add('animate');
+            });
+            skillBarObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.1 });
+        skillBarObserver.observe(skillsSection);
+      }
+
+      // ─── Active nav link on scroll ────────────────
+      const sections = document.querySelectorAll<HTMLElement>('section[id]');
+      const navLinks  = document.querySelectorAll<HTMLAnchorElement>('.nav-links a');
+
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((link) => {
+            link.style.color =
+              link.getAttribute('href') === '#' + entry.target.id
+                ? 'var(--accent)'
+                : '';
+          });
+        });
+      }, { threshold: 0.4 });
+
+      sections.forEach((s) => navObserver.observe(s));
+    </script>
+  </body>
+</html>
