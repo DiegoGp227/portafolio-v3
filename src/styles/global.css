@@ -184,7 +184,7 @@ nav.scrolled {
 
 .hero-right { z-index: 1; display: flex; justify-content: center; align-items: center; }
 
-.avatar-wrap { position: relative; width: 380px; height: 380px; }
+.avatar-wrap { position: relative; width: 600px; height: 600px; }
 .avatar-bg {
   position: absolute; inset: 0;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
@@ -201,11 +201,24 @@ nav.scrolled {
 .avatar-img {
   position: absolute; inset: 30px;
   border-radius: 50%;
-  background: var(--surface2);
+  background: var(--bg);
   border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
 }
-.avatar-placeholder { font-size: 100px; opacity: 0.15; }
+.avatar-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 8px var(--bg);
+  pointer-events: none;
+  z-index: 1;
+}
+.avatar-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 
 .avatar-badge {
   position: absolute; bottom: 20px; right: 0;
