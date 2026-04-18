@@ -591,6 +591,10 @@ section { padding: 120px 60px; }
 .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
 .form-textarea { min-height: 120px; }
 .form-submit { align-self: flex-start; margin-top: 8px; }
+.form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.form-feedback { font-size: 13px; font-family: var(--font-mono); letter-spacing: 0.03em; min-height: 20px; }
+.form-feedback--ok  { color: #4ade80; }
+.form-feedback--err { color: #f87171; }
 
 /* ─── Footer ───────────────────────────────────── */
 footer {
