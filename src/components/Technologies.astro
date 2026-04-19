@@ -25,24 +25,24 @@ const categories = [
 ];
 ---
 
-<section id="technologies">
+<section id="technologies" class="px-15 py-30 relative overflow-hidden">
   <div class="section-label reveal">Stack</div>
   <h2 class="section-title reveal reveal-delay-1"><em>Tecnologías</em> que uso</h2>
 
-  <div class="tech-categories">
+  <div class="flex flex-col gap-12">
     {categories.map((cat, i) => (
       <div class={`reveal reveal-delay-${(i % 3) + 1}`}>
-        <div class="tech-category-label">{cat.label}</div>
-        <div class="tech-icon-grid">
+        <div class="font-mono text-xs tracking-widest uppercase text-muted mb-5">{cat.label}</div>
+        <div class="flex flex-wrap gap-2.5">
           {cat.items.map((name) => {
             const icon = getIcon(name);
             return (
-              <div class="tech-icon-card">
+              <div class="tech-icon-card flex flex-col items-center justify-center gap-2.5 w-22 py-4.5 px-2 bg-surface border border-border transition-all duration-200 cursor-default">
                 {icon
-                  ? <img src={icon} alt={name} loading="lazy" />
-                  : <span class="tech-icon-fallback">{name.slice(0, 2).toUpperCase()}</span>
+                  ? <img src={icon} alt={name} loading="lazy" class="w-10 h-10 object-contain grayscale-[15%] transition-all duration-200" />
+                  : <span class="w-10 h-10 flex items-center justify-center bg-surface2 border border-border font-mono text-xs font-bold text-accent">{name.slice(0, 2).toUpperCase()}</span>
                 }
-                <span class="tech-icon-label">{name}</span>
+                <span class="font-mono text-[10px] text-muted text-center leading-tight transition-colors duration-200">{name}</span>
               </div>
             );
           })}

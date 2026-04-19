@@ -64,71 +64,75 @@ const projects: Project[] = [
 ];
 ---
 
-<section id="projects">
+<section id="projects" class="bg-surface px-15 py-30">
   <div class="section-label reveal">Trabajo real</div>
   <h2 class="section-title reveal reveal-delay-1"><em>Proyectos</em> en producción</h2>
 
-  <div class="projects-grid">
+  <div class="grid grid-cols-2 gap-6">
     {projects.map((project, i) => (
-      <div class={`project-card reveal reveal-delay-${(i % 2) + 1}`}>
+      <div class={`project-card bg-bg border border-border overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 reveal reveal-delay-${(i % 2) + 1}`}>
 
-        <div class="project-thumb">
+        <div class="project-thumb bg-surface2 pt-4 px-4 overflow-hidden shrink-0 relative">
           {project.image ? (
-            <div class="browser-frame">
-              <div class="browser-topbar">
-                <div class="fake-dot r"></div>
-                <div class="fake-dot y"></div>
-                <div class="fake-dot g"></div>
-                <span class="browser-url">{project.live ?? project.github}</span>
+            <div class="border border-border/30 overflow-hidden rounded-t-md">
+              <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-surface2 border-b border-border">
+                <div class="w-2 h-2 rounded-full bg-[#ff5f57]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#febc2e]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#28c840]"></div>
+                <span class="font-mono text-[11px] text-muted ml-2.5 tracking-wide">{project.live ?? project.github}</span>
               </div>
-              <div class="browser-screen">
-                <img src={project.image} alt={project.title} loading="lazy" />
+              <div class="overflow-hidden aspect-video">
+                <img src={project.image} alt={project.title} loading="lazy"
+                     class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
               </div>
             </div>
           ) : (
-            <div class="project-thumb-inner">
-              <div class="fake-ui">
-                <div class="fake-topbar">
-                  <div class="fake-dot r"></div>
-                  <div class="fake-dot y"></div>
-                  <div class="fake-dot g"></div>
+            <div class="w-full aspect-video flex items-center justify-center">
+              <div class="fake-ui w-[85%] h-[75%] bg-surface border border-border rounded p-3 flex flex-col gap-2">
+                <div class="flex items-center gap-1.5">
+                  <div class="w-2 h-2 rounded-full bg-[#ff5f57]"></div>
+                  <div class="w-2 h-2 rounded-full bg-[#febc2e]"></div>
+                  <div class="w-2 h-2 rounded-full bg-[#28c840]"></div>
                 </div>
-                <div class="fake-content">
-                  <div class="fake-line accent"></div>
-                  <div class="fake-line long"></div>
-                  <div class="fake-line mid"></div>
-                  <div class="fake-block">
+                <div class="flex flex-col gap-1.5 flex-1 pt-1">
+                  <div class="h-1.5 rounded-sm bg-accent/35 w-3/5"></div>
+                  <div class="h-1.5 rounded-sm bg-surface2 w-11/12"></div>
+                  <div class="h-1.5 rounded-sm bg-surface2 w-7/10"></div>
+                  <div class="flex gap-1.5 flex-1 p-2 bg-surface2 rounded-sm">
                     {Array.from({ length: project.fakeUiCols ?? 3 }).map(() => (
-                      <div class="fake-col"></div>
+                      <div class="flex-1 bg-accent/7 rounded-sm"></div>
                     ))}
                   </div>
-                  <div class="fake-line short"></div>
+                  <div class="h-1.5 rounded-sm bg-surface2 w-2/5"></div>
                 </div>
               </div>
             </div>
           )}
-          <div class="project-status-badge" data-status={project.status}>
+          <div class={`project-status-badge absolute top-3.5 right-3.5 font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-surface text-muted
+            ${project.status === 'Beta' ? 'border-accent/50 text-accent bg-accent/8' : ''}
+            ${project.status === 'Terminado' ? 'border-accent/30 text-accent' : ''}
+            ${project.status === 'En desarrollo' ? 'border-yellow-400/30 text-yellow-400' : ''}`}>
             {project.status}
           </div>
         </div>
 
-        <div class="project-info">
-          <div class="project-num">{project.num}</div>
-          <h3 class="project-title">{project.title}</h3>
-          <p class="project-subtitle">{project.subtitle}</p>
-          <p class="project-desc">{project.description}</p>
-          <div class="project-tags">
+        <div class="p-8 flex flex-col flex-1">
+          <div class="font-mono text-[11px] text-muted tracking-widest mb-3">{project.num}</div>
+          <h3 class="text-2xl font-bold mb-1 tracking-tight">{project.title}</h3>
+          <p class="font-mono text-xs text-muted mb-3.5 tracking-wide">{project.subtitle}</p>
+          <p class="text-sm text-muted leading-relaxed mb-6">{project.description}</p>
+          <div class="flex flex-wrap gap-2 mb-7">
             {project.tags.map((tag) => (
-              <span class="project-tag">{tag}</span>
+              <span class="project-tag px-3.5 py-1 border border-border font-mono text-[11px] text-muted tracking-wide transition-all duration-200">{tag}</span>
             ))}
           </div>
-          <div class="project-links">
+          <div class="flex gap-2.5 items-center flex-wrap mt-auto">
             {project.live && (
               <a href={project.live} target="_blank" rel="noopener noreferrer" class="btn-primary sm">Ver en vivo</a>
             )}
             <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn-ghost sm">GitHub</a>
             {project.detailPage && (
-              <a href={project.detailPage} class="project-link">Ver más →</a>
+              <a href={project.detailPage} class="text-xs tracking-widest uppercase text-accent no-underline flex items-center gap-1.5 transition-all duration-200 hover:gap-2.5">Ver más →</a>
             )}
           </div>
         </div>

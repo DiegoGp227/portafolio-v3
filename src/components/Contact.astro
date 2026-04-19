@@ -6,49 +6,59 @@ const socials = [
 ];
 ---
 
-<section id="contact">
+<section id="contact" class="grid grid-cols-2 gap-25 items-start px-15 py-30">
   <div class="contact-left">
     <div class="section-label reveal">Contacto</div>
     <h2 class="section-title reveal reveal-delay-1">
       Disponible para<br /><em>su equipo.</em>
     </h2>
-    <p class="contact-tagline reveal reveal-delay-2">
+    <p class="text-lg text-muted leading-relaxed mb-12 reveal reveal-delay-2">
       Abierto a posiciones frontend en empresas que valoren
       el código bien hecho, la entrega constante y trabajar
       con propósito. Respondo en menos de 24h.
     </p>
-    <div class="contact-links reveal reveal-delay-3">
+    <div class="flex flex-col reveal reveal-delay-3">
       {socials.map((s) => (
-        <a href={s.href} target="_blank" rel="noopener noreferrer" class="contact-link-row">
-          <span class="contact-link-label">{s.label}</span>
-          <span class="contact-link-handle">{s.handle}</span>
-          <span class="contact-arrow">→</span>
+        <a href={s.href} target="_blank" rel="noopener noreferrer"
+           class="contact-link-row flex items-center justify-between py-5 border-b border-border text-text no-underline transition-all duration-200 hover:text-accent hover:pl-2">
+          <span class="text-sm font-medium">{s.label}</span>
+          <span class="font-mono text-xs text-muted">{s.handle}</span>
+          <span class="text-lg transition-transform duration-200">→</span>
         </a>
       ))}
     </div>
   </div>
 
   <div class="reveal reveal-delay-2">
-    <form class="contact-form" id="contact-form">
+    <form class="flex flex-col gap-4" id="contact-form">
       <input type="hidden" name="_captcha" value="false" />
-      <input type="text" name="_honey" style="display:none" />
+      <input type="text" name="_honey" class="hidden" />
 
-      <div class="form-group">
-        <label class="form-label">Empresa / Nombre</label>
-        <input type="text" name="name" class="form-input" placeholder="Acme Corp." required />
+      <div class="flex flex-col gap-2">
+        <label class="font-mono text-xs tracking-widest uppercase text-muted">Empresa / Nombre</label>
+        <input type="text" name="name" placeholder="Acme Corp."
+               class="bg-surface border border-border text-text px-4 py-3.5 text-sm font-sans outline-none transition-colors duration-200 focus:border-accent"
+               required />
       </div>
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-input" placeholder="rrhh@empresa.com" required />
+      <div class="flex flex-col gap-2">
+        <label class="font-mono text-xs tracking-widest uppercase text-muted">Email</label>
+        <input type="email" name="email" placeholder="rrhh@empresa.com"
+               class="bg-surface border border-border text-text px-4 py-3.5 text-sm font-sans outline-none transition-colors duration-200 focus:border-accent"
+               required />
       </div>
-      <div class="form-group">
-        <label class="form-label">Posición / Mensaje</label>
-        <textarea name="message" class="form-textarea" placeholder="Cuéntame sobre el rol o proyecto..." required></textarea>
+      <div class="flex flex-col gap-2">
+        <label class="font-mono text-xs tracking-widest uppercase text-muted">Posición / Mensaje</label>
+        <textarea name="message" placeholder="Cuéntame sobre el rol o proyecto..."
+                  class="bg-surface border border-border text-text px-4 py-3.5 text-sm font-sans outline-none transition-colors duration-200 focus:border-accent resize-none min-h-30"
+                  required></textarea>
       </div>
 
-      <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+      <div id="form-feedback" class="font-mono text-xs tracking-wide min-h-5" aria-live="polite"></div>
 
-      <button class="btn-primary form-submit" type="submit" id="form-btn">Enviar</button>
+      <button id="form-btn" type="submit"
+              class="btn-primary self-start mt-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+        Enviar
+      </button>
     </form>
   </div>
 </section>
@@ -64,7 +74,7 @@ const socials = [
     btn.disabled = true;
     btn.textContent = 'Enviando...';
     feedback.textContent = '';
-    feedback.className = 'form-feedback';
+    feedback.className = 'font-mono text-xs tracking-wide min-h-5';
 
     const data = Object.fromEntries(new FormData(form));
 
@@ -77,14 +87,14 @@ const socials = [
 
       if (res.ok) {
         feedback.textContent = '✓ Mensaje enviado. Te respondo en menos de 24h.';
-        feedback.classList.add('form-feedback--ok');
+        feedback.classList.add('text-green-400');
         form.reset();
       } else {
         throw new Error();
       }
     } catch {
       feedback.textContent = '✗ No se pudo enviar. Escríbeme directo a diego.gp227@gmail.com';
-      feedback.classList.add('form-feedback--err');
+      feedback.classList.add('text-red-400');
     } finally {
       btn.disabled = false;
       btn.textContent = 'Enviar';

@@ -1,8 +1,8 @@
 ---
 ---
 
-<section id="hero">
-  <div class="hero-left">
+<section id="hero" class="min-h-screen grid grid-cols-2 items-center px-15 pt-30 pb-15 relative overflow-hidden">
+  <div class="hero-left z-10">
     <div class="hero-label reveal">
       <span class="available-dot"></span>
       Disponible para nuevas oportunidades
@@ -13,38 +13,38 @@
       <span class="accent-word glitch" data-text="Developer">Developer</span>
     </h1>
 
-    <p class="hero-desc reveal reveal-delay-2">
+    <p class="max-w-[460px] text-[17px] leading-[1.7] text-muted mb-7 reveal reveal-delay-2">
       Construyo interfaces web rápidas, accesibles y mantenibles.
       Trabajo con React y Next.js en entornos de producción —
       enfocado en calidad de código, experiencia de usuario y entregas reales.
     </p>
 
-    <div class="hero-meta reveal reveal-delay-3">
-      <span class="hero-meta-item">React · Next.js · TypeScript</span>
-      <span class="hero-meta-sep">·</span>
-      <span class="hero-meta-item">Diego Gongora</span>
+    <div class="flex items-center gap-2.5 mb-10 flex-wrap reveal reveal-delay-3">
+      <span class="font-mono text-xs text-muted tracking-wide">React · Next.js · TypeScript</span>
+      <span class="text-border">·</span>
+      <span class="font-mono text-xs text-muted tracking-wide">Diego Gongora</span>
     </div>
 
-    <div class="hero-cta reveal reveal-delay-4">
+    <div class="flex gap-5 items-center reveal reveal-delay-4">
       <a href="#projects" class="btn-primary">Ver proyectos</a>
       <a href="#contact"  class="btn-ghost">Contactar</a>
     </div>
   </div>
 
-  <div class="hero-right reveal reveal-delay-2">
+  <div class="hero-right z-10 flex justify-center items-center reveal reveal-delay-2">
     <div class="avatar-wrap">
-      <div class="avatar-bg"></div>
+      <div class="avatar-bg absolute inset-0"></div>
       <div class="avatar-img">
         <img src="/Me.png" alt="Diego Gongora" />
       </div>
-      <div class="avatar-badge">
-        <div class="badge-number">+2</div>
-        <div class="badge-label">años de experiencia</div>
+      <div class="avatar-badge absolute bottom-5 right-0 bg-surface border border-border px-5 py-3.5 backdrop-blur-sm">
+        <div class="text-4xl font-extrabold text-accent leading-none">+2</div>
+        <div class="font-mono text-[11px] text-muted tracking-widest uppercase mt-1">años de experiencia</div>
       </div>
     </div>
   </div>
 
-  <div class="hero-scroll">
+  <div class="hero-scroll absolute bottom-10 left-15 flex items-center gap-4 font-mono text-[11px] text-muted tracking-widest uppercase">
     <div class="scroll-line"></div>
     Scroll
   </div>
