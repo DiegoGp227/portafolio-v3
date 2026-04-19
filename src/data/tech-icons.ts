@@ -16,7 +16,7 @@ export const techIcons: Record<string, string | null> = {
   'Node.js':        `${DI}/nodejs/nodejs-original.svg`,
   'Express':        `${DI}/express/express-original.svg`,
   'Bun':            `${DI}/bun/bun-original.svg`,
-  'Elysia':         null,
+  'Elysia':         `${SI}/elysia/ededf0`,
   // Bases de datos
   'PostgreSQL':     `${DI}/postgresql/postgresql-original.svg`,
   'MySQL':          `${DI}/mysql/mysql-original.svg`,
@@ -36,10 +36,10 @@ export const techIcons: Record<string, string | null> = {
   // Diseño
   'Figma':          `${DI}/figma/figma-original.svg`,
   // Sin icono oficial
-  'JWT':            null,
-  'Zod':            null,
+  'JWT':            `${SI}/jsonwebtokens/ededf0`,
+  'Zod':            `${SI}/zod/ededf0`,
   'REST':           null,
-  'React Hook Form': null,
+  'React Hook Form': `${SI}/reacthookform/ededf0`,
   'VS Code':        `${DI}/vscode/vscode-original.svg`,
   'Telegram Bot API': `${SI}/telegram/ededf0`,
 };
