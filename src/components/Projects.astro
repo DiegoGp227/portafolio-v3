@@ -24,7 +24,7 @@ const projects: Project[] = [
     live: "https://skemap.devdiego.work/",
     github: "https://github.com/DiegoGp227/skemap",
     detailPage: "/projects/skemap",
-    status: "Beta",
+    status: "Terminado",
     image: "/Projects/skemap.png",
   },
   {
@@ -50,7 +50,7 @@ const projects: Project[] = [
     live: "https://kila.coinmaster.devdiego.work/",
     github: "https://github.com/DiegoGp227/KILA",
     detailPage: "/projects/kila",
-    status: "En desarrollo",
+    status: "Beta",
     image: "/Projects/Kila.png",
   },
   {
@@ -125,10 +125,10 @@ const projects: Project[] = [
               </div>
             )}
             <div
-              class={`project-status-badge absolute top-3.5 right-3.5 font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-surface text-muted
-            ${project.status === "Beta" ? "border-accent/50 text-accent bg-accent/8" : ""}
-            ${project.status === "Terminado" ? "border-accent/30 text-accent" : ""}
-            ${project.status === "En desarrollo" ? "border-yellow-400/30 text-yellow-400" : ""}`}
+              class={`project-status-badge absolute top-3.5 right-3.5 font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 border
+            ${project.status === "Beta" ? "border-accent/50 text-accent bg-accent/10" : ""}
+            ${project.status === "Terminado" ? "border-green-500/50 text-green-400 bg-green-500/10" : ""}
+            ${project.status === "En desarrollo" ? "border-yellow-400/50 text-yellow-400 bg-yellow-400/10" : ""}`}
             >
               {project.status}
             </div>
