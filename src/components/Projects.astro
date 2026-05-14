@@ -1,10 +1,4 @@
 ---
-const statusClasses: Record<string, string> = {
-  Beta: "border-accent/50 text-accent bg-accent/10",
-  Terminado: "border-green-500/50 text-green-400 bg-green-500/10",
-  "En desarrollo": "border-yellow-400/50 text-yellow-400 bg-yellow-400/10",
-};
-
 interface Project {
   num: string;
   title: string;
@@ -69,6 +63,19 @@ const projects: Project[] = [
     detailPage: "/projects/server",
     status: "Terminado",
     image: "/Projects/serverCasero.jpg",
+  },
+  {
+    num: "005",
+    title: "Fallenway",
+    subtitle: "Habit tracker personal",
+    description:
+      "Seguimiento de hábitos con frecuencias flexibles (diario, días específicos, N veces/semana). Grilla histórica tipo GitHub y dashboard de estadísticas.",
+    tags: ["Next.js", "React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Tailwind CSS"],
+    live: "https://fallenway.devdiego.work/",
+    github: "https://github.com/DiegoGp227/fallenway",
+    detailPage: "/projects/fallenway",
+    status: "Beta",
+    image: "/Projects/fallenway.png",
   },
 ];
 ---

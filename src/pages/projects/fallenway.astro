@@ -1,0 +1,69 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { getIcon } from '../../data/tech-icons';
+
+const features = [
+  { title: 'Seguimiento por frecuencia flexible', desc: 'Soporta hábitos diarios, por días específicos de la semana, N veces por semana o cada N días. Cada tipo calcula automáticamente si el hábito aplica para hoy.' },
+  { title: 'Vista diaria inteligente', desc: 'La pantalla principal muestra solo los hábitos que corresponden al día actual según su frecuencia, con estado de completado, saltado o pendiente.' },
+  { title: 'Subtareas por hábito', desc: 'Cada hábito puede tener subtareas anidadas con su propio seguimiento de completado dentro del log diario.' },
+  { title: 'Grilla de consistencia histórica', desc: 'Panel visual tipo GitHub que muestra el historial de cumplimiento por día con 5 niveles de intensidad según el porcentaje de hábitos completados.' },
+  { title: 'Dashboard de estadísticas', desc: 'Resumen de rendimiento con filtro por rango de fechas: tasa de cumplimiento, racha actual y hábitos más incumplidos.' },
+  { title: 'Reordenamiento por arrastre', desc: 'Los hábitos se reorganizan con drag-and-drop directamente desde la lista.' },
+  { title: 'Autenticación propia', desc: 'Registro y sesión persistente con JWT. Sin dependencias de servicios externos de auth.' },
+];
+
+const stack = ['Next.js', 'React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS'];
+---
+
+<ProjectLayout title="Fallenway" description="Habit tracker personal con seguimiento inteligente por frecuencia y grilla histórica tipo GitHub.">
+
+  <div class="ppage-hero">
+    <div class="ppage-meta">
+      <span class="ppage-num">005</span>
+      <span class="ppage-status dev">Beta</span>
+    </div>
+    <h1 class="ppage-title">Fallenway</h1>
+    <p class="ppage-subtitle">Habit tracker personal con seguimiento inteligente por frecuencia</p>
+    <p class="ppage-desc">
+      Aplicación para construir y mantener hábitos con soporte para múltiples frecuencias
+      (diario, días específicos, N veces por semana, cada N días). Registra el progreso diario,
+      visualiza la consistencia histórica con una grilla al estilo GitHub y ofrece estadísticas
+      de cumplimiento por usuario.
+    </p>
+    <div class="ppage-links">
+      <a href="https://fallenway.devdiego.work/" target="_blank" rel="noopener noreferrer" class="btn-primary">Ver en vivo</a>
+      <a href="https://github.com/DiegoGp227/fallenway" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub</a>
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Funcionalidades</div>
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <div class="feature-title">{f.title}</div>
+          <div class="feature-desc">{f.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="ppage-section">
+    <div class="section-label">Stack técnico</div>
+    <div class="stack-icon-grid">
+      {stack.map((name) => {
+        const icon = getIcon(name);
+        return (
+          <div class="stack-icon-card">
+            {icon
+              ? <img src={icon} alt={name} loading="lazy" />
+              : <span class="stack-icon-fallback">{name.slice(0, 2).toUpperCase()}</span>
+            }
+            <span>{name}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+</ProjectLayout>
